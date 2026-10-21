@@ -8,7 +8,7 @@ export function Slider({ slides }: { slides: Slide[] }) {
   const [i, setI] = useState(0);
   const live = useRef<HTMLParagraphElement>(null);
   const go = (n: number) => setI((n + slides.length) % slides.length);
-  const s = slides[i];
+  const s = slides[i]!;
 
   return (
     <section

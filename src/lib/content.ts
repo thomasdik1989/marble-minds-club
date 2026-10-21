@@ -47,5 +47,5 @@ export const news: NewsItem[] = [
 ];
 
 export function initials(name: string) {
-  return name.split(" ").filter((p) => p[0] === p[0].toUpperCase()).map((p) => p[0]).slice(0, 2).join("");
+  return name.split(" ").filter((p) => p[0] && p[0] === p[0].toUpperCase()).map((p) => p[0]).slice(0, 2).join("");
 }
