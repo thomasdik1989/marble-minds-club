@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LidmaatschapRouteImport } from './routes/lidmaatschap'
+import { Route as NieuwsRouteImport } from './routes/nieuws'
+import { Route as TechnischeDienstRouteImport } from './routes/technische-dienst'
+import { Route as BestuurIndexRouteImport } from './routes/bestuur.index'
+import { Route as BestuurSlugRouteImport } from './routes/bestuur.$slug'
+import { Route as CursussenIndexRouteImport } from './routes/cursussen.index'
+import { Route as CursussenSlugRouteImport } from './routes/cursussen.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LidmaatschapRoute = LidmaatschapRouteImport.update({
+  id: '/lidmaatschap',
+  path: '/lidmaatschap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NieuwsRoute = NieuwsRouteImport.update({
+  id: '/nieuws',
+  path: '/nieuws',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TechnischeDienstRoute = TechnischeDienstRouteImport.update({
+  id: '/technische-dienst',
+  path: '/technische-dienst',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BestuurIndexRoute = BestuurIndexRouteImport.update({
+  id: '/bestuur/',
+  path: '/bestuur/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BestuurSlugRoute = BestuurSlugRouteImport.update({
+  id: '/bestuur/$slug',
+  path: '/bestuur/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CursussenIndexRoute = CursussenIndexRouteImport.update({
+  id: '/cursussen/',
+  path: '/cursussen/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CursussenSlugRoute = CursussenSlugRouteImport.update({
+  id: '/cursussen/$slug',
+  path: '/cursussen/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/lidmaatschap': typeof LidmaatschapRoute
+  '/nieuws': typeof NieuwsRoute
+  '/technische-dienst': typeof TechnischeDienstRoute
+  '/bestuur/$slug': typeof BestuurSlugRoute
+  '/cursussen/$slug': typeof CursussenSlugRoute
+  '/bestuur/': typeof BestuurIndexRoute
+  '/cursussen/': typeof CursussenIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/lidmaatschap': typeof LidmaatschapRoute
+  '/nieuws': typeof NieuwsRoute
+  '/technische-dienst': typeof TechnischeDienstRoute
+  '/bestuur/$slug': typeof BestuurSlugRoute
+  '/cursussen/$slug': typeof CursussenSlugRoute
+  '/bestuur': typeof BestuurIndexRoute
+  '/cursussen': typeof CursussenIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/lidmaatschap': typeof LidmaatschapRoute
+  '/nieuws': typeof NieuwsRoute
+  '/technische-dienst': typeof TechnischeDienstRoute
+  '/bestuur/$slug': typeof BestuurSlugRoute
+  '/cursussen/$slug': typeof CursussenSlugRoute
+  '/bestuur/': typeof BestuurIndexRoute
+  '/cursussen/': typeof CursussenIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/lidmaatschap'
+    | '/nieuws'
+    | '/technische-dienst'
+    | '/bestuur/$slug'
+    | '/cursussen/$slug'
+    | '/bestuur/'
+    | '/cursussen/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/lidmaatschap'
+    | '/nieuws'
+    | '/technische-dienst'
+    | '/bestuur/$slug'
+    | '/cursussen/$slug'
+    | '/bestuur'
+    | '/cursussen'
+  id:
+    | '__root__'
+    | '/'
+    | '/lidmaatschap'
+    | '/nieuws'
+    | '/technische-dienst'
+    | '/bestuur/$slug'
+    | '/cursussen/$slug'
+    | '/bestuur/'
+    | '/cursussen/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LidmaatschapRoute: typeof LidmaatschapRoute
+  NieuwsRoute: typeof NieuwsRoute
+  TechnischeDienstRoute: typeof TechnischeDienstRoute
+  BestuurSlugRoute: typeof BestuurSlugRoute
+  CursussenSlugRoute: typeof CursussenSlugRoute
+  BestuurIndexRoute: typeof BestuurIndexRoute
+  CursussenIndexRoute: typeof CursussenIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lidmaatschap': {
+      id: '/lidmaatschap'
+      path: '/lidmaatschap'
+      fullPath: '/lidmaatschap'
+      preLoaderRoute: typeof LidmaatschapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nieuws': {
+      id: '/nieuws'
+      path: '/nieuws'
+      fullPath: '/nieuws'
+      preLoaderRoute: typeof NieuwsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/technische-dienst': {
+      id: '/technische-dienst'
+      path: '/technische-dienst'
+      fullPath: '/technische-dienst'
+      preLoaderRoute: typeof TechnischeDienstRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bestuur/': {
+      id: '/bestuur/'
+      path: '/bestuur'
+      fullPath: '/bestuur/'
+      preLoaderRoute: typeof BestuurIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bestuur/$slug': {
+      id: '/bestuur/$slug'
+      path: '/bestuur/$slug'
+      fullPath: '/bestuur/$slug'
+      preLoaderRoute: typeof BestuurSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cursussen/': {
+      id: '/cursussen/'
+      path: '/cursussen'
+      fullPath: '/cursussen/'
+      preLoaderRoute: typeof CursussenIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cursussen/$slug': {
+      id: '/cursussen/$slug'
+      path: '/cursussen/$slug'
+      fullPath: '/cursussen/$slug'
+      preLoaderRoute: typeof CursussenSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LidmaatschapRoute: LidmaatschapRoute,
+  NieuwsRoute: NieuwsRoute,
+  TechnischeDienstRoute: TechnischeDienstRoute,
+  BestuurSlugRoute: BestuurSlugRoute,
+  CursussenSlugRoute: CursussenSlugRoute,
+  BestuurIndexRoute: BestuurIndexRoute,
+  CursussenIndexRoute: CursussenIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
