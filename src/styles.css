@@ -93,3 +93,10 @@
   background-image: var(--marble-url);
   background-size: 48rem;
 }
+
+/* Reflow: let grid/flex children shrink and long Dutch words break at 200–400% zoom. */
+@layer base {
+  .grid > *, .flex > * { min-width: 0; }
+  h1, h2, h3 { hyphens: auto; overflow-wrap: anywhere; }
+  img { max-width: 100%; height: auto; }
+}
