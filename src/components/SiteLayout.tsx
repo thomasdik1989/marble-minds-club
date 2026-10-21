@@ -23,7 +23,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <header className="border-b-4 border-primary bg-card/95">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-4">
           <Link to="/" className="group flex items-center gap-3 no-underline">
-            <span aria-hidden="true" className="grid size-14 place-items-center rounded-2xl bg-primary font-display text-2xl font-bold text-primary-foreground -rotate-6 group-hover:rotate-0 transition-transform">
+            <span aria-hidden="true" className="flex size-14 items-center justify-center rounded-2xl bg-primary font-display text-2xl font-bold text-primary-foreground -rotate-6 group-hover:rotate-0 transition-transform">
               C<span className="text-highlight">c</span>
             </span>
             <span className="leading-tight">
