@@ -14,7 +14,7 @@ export function Slider({ slides }: { slides: Slide[] }) {
     <section
       aria-roledescription="carrousel"
       aria-label="Foto's van de club"
-      className="relative overflow-hidden rounded-3xl border-4 border-primary bg-card shadow-[0.6rem_0.6rem_0_var(--primary)]"
+      className="relative overflow-hidden rounded-3xl border-4 border-primary bg-card shadow-[0.3rem_0.3rem_0_var(--primary)] sm:shadow-[0.6rem_0.6rem_0_var(--primary)]"
       onKeyDown={(e) => {
         if (e.key === "ArrowRight") go(i + 1);
         if (e.key === "ArrowLeft") go(i - 1);

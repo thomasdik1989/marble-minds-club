@@ -28,7 +28,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             </span>
             <span className="leading-tight">
               <span className="block font-display text-2xl font-bold text-foreground">{club.short}</span>
-              <span className="block text-base text-muted-foreground">Computerclub Heerhugowaard</span>
+              <span className="block text-base text-muted-foreground [overflow-wrap:anywhere]">Computerclub Heerhugowaard</span>
             </span>
           </Link>
           <button
@@ -87,7 +87,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 export function PageHeader({ title, intro }: { title: string; intro?: string }) {
   return (
     <div className="mx-auto max-w-6xl px-5 pt-12 pb-6">
-      <h1 className="text-4xl md:text-5xl font-bold text-primary">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary">
         {title}
         <span aria-hidden="true" className="ml-2 inline-block rotate-12 text-highlight [text-shadow:0_0.1em_0_var(--primary)]">✦</span>
       </h1>
