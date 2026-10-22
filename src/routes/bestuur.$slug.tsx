@@ -14,6 +14,8 @@ export const Route = createFileRoute("/bestuur/$slug")({
           { name: "description", content: loaderData.bio },
           { property: "og:title", content: `${loaderData.name} — CompuClub` },
           { property: "og:description", content: loaderData.bio },
+          { property: "og:type", content: "website" },
+          { name: "twitter:card", content: "summary_large_image" },
         ]
       : [{ title: "Niet gevonden — CompuClub" }, { name: "robots", content: "noindex" }],
   }),

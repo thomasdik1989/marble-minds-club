@@ -9,6 +9,8 @@ export const Route = createFileRoute("/nieuws")({
       { name: "description", content: "Het laatste nieuws van de computerclub in Heerhugowaard." },
       { property: "og:title", content: "Nieuws — CompuClub" },
       { property: "og:description", content: "Het laatste nieuws van de computerclub." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: () => (

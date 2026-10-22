@@ -10,6 +10,8 @@ export const Route = createFileRoute("/bestuur/")({
       { name: "description", content: "Maak kennis met het bestuur van de computerclub." },
       { property: "og:title", content: "Bestuur — CompuClub" },
       { property: "og:description", content: "Maak kennis met het bestuur van de computerclub." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: () => (

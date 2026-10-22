@@ -10,6 +10,8 @@ export const Route = createFileRoute("/cursussen/")({
       { name: "description", content: "Computercursussen voor beginners en gevorderden: fotobewerking, smartphone, Windows en meer." },
       { property: "og:title", content: "Cursussen — CompuClub" },
       { property: "og:description", content: "Computercursussen voor beginners en gevorderden." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: () => (

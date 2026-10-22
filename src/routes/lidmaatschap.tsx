@@ -10,6 +10,8 @@ export const Route = createFileRoute("/lidmaatschap")({
       { name: "description", content: "Word lid van de computerclub: wat krijgt u en hoe meldt u zich aan." },
       { property: "og:title", content: "Lidmaatschap — CompuClub" },
       { property: "og:description", content: "Word lid van de computerclub in Heerhugowaard." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: () => (
