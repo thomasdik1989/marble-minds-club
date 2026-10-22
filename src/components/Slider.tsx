@@ -8,7 +8,8 @@ export function Slider({ slides }: { slides: Slide[] }) {
   const [i, setI] = useState(0);
   const live = useRef<HTMLParagraphElement>(null);
   const go = (n: number) => setI((n + slides.length) % slides.length);
-  const s = slides[i]!;
+   const s = slides[i];
+   if (!s) return null;
 
   return (
     <section
@@ -36,7 +37,7 @@ export function Slider({ slides }: { slides: Slide[] }) {
                 onClick={() => go(n)}
                 aria-current={n === i ? "true" : undefined}
                 aria-label={`Foto ${n + 1}: ${sl.caption}`}
-                className={`grid size-12 place-items-center rounded-full border-2 font-bold ${n === i ? "bg-primary text-primary-foreground" : "hover:bg-accent"}`}
+                className={`grid size-12 place-items-center rounded-full border-2 font-bold ${n === i ? "bg-primary text-primary-foreground underline decoration-2 underline-offset-4" : "hover:bg-accent"}`}
               >
                 {n + 1}
               </button>
