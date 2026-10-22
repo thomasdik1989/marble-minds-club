@@ -33,7 +33,7 @@
   --color-highlight: var(--highlight);
 }
 
-/* All text pairs meet WCAG AAA (≥ 7:1). Colour is never the only signal. */
+/* Text pairs exceed WCAG AAA (7:1); pale highlight is decorative, not a boundary. */
 :root {
   --radius: 1rem;
   --background: oklch(0.955 0.02 80);      /* beige */
@@ -56,6 +56,9 @@
   --border: oklch(0.33 0.14 305);
   --input: oklch(0.33 0.14 305);
   --ring: oklch(0.22 0.08 305);
+  /* Two-tone focus stays visible on both purple and pale surfaces. */
+  --focus-inner: var(--primary-foreground);
+  --focus-outer: var(--foreground);
 }
 
 @layer base {
@@ -78,9 +81,9 @@
   p { max-width: 70ch; }
   a { text-underline-offset: 0.2em; text-decoration-thickness: 0.1em; }
   :focus-visible {
-    outline: 0.25rem solid var(--foreground);
+    outline: 0.2rem solid var(--focus-inner);
     outline-offset: 0.2rem;
-    box-shadow: 0 0 0 0.6rem var(--highlight);
+    box-shadow: 0 0 0 0.6rem var(--focus-outer);
     border-radius: 0.25rem;
   }
   @media (prefers-reduced-motion: reduce) {
