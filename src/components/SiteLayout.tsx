@@ -1,4 +1,4 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useRouter, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Menu, X, Mail, Phone, MapPin } from "lucide-react";
 import marble from "@/assets/marble.jpg";
@@ -16,8 +16,8 @@ const nav = [
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
   const pathname = useRouterState({ select: (state) => state.location.pathname });
-  const previousPath = useRef(pathname);
   const mainRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLButtonElement>(null);
   const focusContent = () => {
@@ -30,12 +30,18 @@ export function SiteLayout({ children }: { children: ReactNode }) {
     }
   };
   useEffect(() => {
-    if (previousPath.current === pathname) return;
-    previousPath.current = pathname;
-    setOpen(false);
-    const frame = requestAnimationFrame(focusContent);
-    return () => cancelAnimationFrame(frame);
-  }, [pathname]);
+    let frame: number | undefined;
+    const unsubscribe = router.subscribe("onRendered", (event) => {
+      if (!event.pathChanged) return;
+      setOpen(false);
+      if (frame !== undefined) cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(focusContent);
+    });
+    return () => {
+      unsubscribe();
+      if (frame !== undefined) cancelAnimationFrame(frame);
+    };
+  }, [router]);
   return (
     <div className="marble min-h-dvh flex flex-col" style={{ ["--marble-url" as string]: `url(${marble})` }}>
       <a href="#inhoud" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 rounded-lg bg-primary px-5 py-3 text-primary-foreground font-bold">
