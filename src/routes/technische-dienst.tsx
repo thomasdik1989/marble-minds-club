@@ -10,6 +10,8 @@ export const Route = createFileRoute("/technische-dienst")({
       { name: "description", content: "Computer traag of kapot? De Technische Dienst van de club helpt leden verder." },
       { property: "og:title", content: "Technische Dienst — CompuClub" },
       { property: "og:description", content: "Hulp bij computerproblemen voor leden." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: () => (

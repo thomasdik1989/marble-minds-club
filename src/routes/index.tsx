@@ -12,6 +12,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Regionale Computerclub Noord-Holland: cursussen, hulp en gezelligheid elke donderdag in Heerhugowaard." },
       { property: "og:title", content: "CompuClub Heerhugowaard" },
       { property: "og:description", content: "Cursussen, hulp en gezelligheid elke donderdag in Heerhugowaard." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
@@ -26,10 +28,10 @@ const slides = [
 function Index() {
   return (
     <div className="mx-auto max-w-6xl px-5 py-10">
+      <h1 className="mb-8 text-3xl sm:text-4xl md:text-5xl font-bold text-primary">Welkom bij de computerclub!</h1>
       <div className="grid gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-start">
         <Slider slides={slides} />
         <div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary">Welkom bij de computerclub!</h1>
           <p className="mt-4 text-xl">
             Een onafhankelijke club, opgericht in 1988, met als motto{" "}
             <strong className="bg-highlight px-1 text-foreground">“{club.motto}”</strong>.
