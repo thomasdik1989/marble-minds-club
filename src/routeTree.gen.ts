@@ -17,6 +17,7 @@ import { Route as BestuurIndexRouteImport } from './routes/bestuur.index'
 import { Route as BestuurSlugRouteImport } from './routes/bestuur.$slug'
 import { Route as CursussenIndexRouteImport } from './routes/cursussen.index'
 import { Route as CursussenSlugRouteImport } from './routes/cursussen.$slug'
+import { Route as NieuwsSlugRouteImport } from './routes/nieuws_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,6 +59,11 @@ const CursussenSlugRoute = CursussenSlugRouteImport.update({
   path: '/cursussen/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NieuwsSlugRoute = NieuwsSlugRouteImport.update({
+  id: '/nieuws_/$slug',
+  path: '/nieuws/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/technische-dienst': typeof TechnischeDienstRoute
   '/bestuur/$slug': typeof BestuurSlugRoute
   '/cursussen/$slug': typeof CursussenSlugRoute
+  '/nieuws/$slug': typeof NieuwsSlugRoute
   '/bestuur/': typeof BestuurIndexRoute
   '/cursussen/': typeof CursussenIndexRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/technische-dienst': typeof TechnischeDienstRoute
   '/bestuur/$slug': typeof BestuurSlugRoute
   '/cursussen/$slug': typeof CursussenSlugRoute
+  '/nieuws/$slug': typeof NieuwsSlugRoute
   '/bestuur': typeof BestuurIndexRoute
   '/cursussen': typeof CursussenIndexRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/technische-dienst': typeof TechnischeDienstRoute
   '/bestuur/$slug': typeof BestuurSlugRoute
   '/cursussen/$slug': typeof CursussenSlugRoute
+  '/nieuws_/$slug': typeof NieuwsSlugRoute
   '/bestuur/': typeof BestuurIndexRoute
   '/cursussen/': typeof CursussenIndexRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/technische-dienst'
     | '/bestuur/$slug'
     | '/cursussen/$slug'
+    | '/nieuws/$slug'
     | '/bestuur/'
     | '/cursussen/'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/technische-dienst'
     | '/bestuur/$slug'
     | '/cursussen/$slug'
+    | '/nieuws/$slug'
     | '/bestuur'
     | '/cursussen'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/technische-dienst'
     | '/bestuur/$slug'
     | '/cursussen/$slug'
+    | '/nieuws_/$slug'
     | '/bestuur/'
     | '/cursussen/'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   TechnischeDienstRoute: typeof TechnischeDienstRoute
   BestuurSlugRoute: typeof BestuurSlugRoute
   CursussenSlugRoute: typeof CursussenSlugRoute
+  NieuwsSlugRoute: typeof NieuwsSlugRoute
   BestuurIndexRoute: typeof BestuurIndexRoute
   CursussenIndexRoute: typeof CursussenIndexRoute
 }
@@ -192,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CursussenSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/nieuws_/$slug': {
+      id: '/nieuws_/$slug'
+      path: '/nieuws/$slug'
+      fullPath: '/nieuws/$slug'
+      preLoaderRoute: typeof NieuwsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -202,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   TechnischeDienstRoute: TechnischeDienstRoute,
   BestuurSlugRoute: BestuurSlugRoute,
   CursussenSlugRoute: CursussenSlugRoute,
+  NieuwsSlugRoute: NieuwsSlugRoute,
   BestuurIndexRoute: BestuurIndexRoute,
   CursussenIndexRoute: CursussenIndexRoute,
 }

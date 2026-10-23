@@ -8,7 +8,7 @@ export type Course = {
   summary: string;
   details: string[];
 };
-export type NewsItem = { date: string; title: string; body: string };
+export type NewsItem = { slug: string; date: string; title: string; body: string };
 
 export const club = {
   name: "Regionale Computerclub Noord-Holland",
@@ -41,9 +41,9 @@ export const courses: Course[] = [
 ];
 
 export const news: NewsItem[] = [
-  { date: "2026-10-15", title: "Nieuwe cursus: Veilig online", body: "Vanaf november starten we met een korte cursus over veilig internetten. Aanmelden kan via de cursuscoördinator." },
-  { date: "2026-09-28", title: "Workshop kalender maken groot succes", body: "Twintig leden maakten hun eigen kalender voor 2027. Bedankt aan alle vrijwilligers!" },
-  { date: "2026-09-01", title: "Het nieuwe seizoen is begonnen", body: "Na de zomer zijn we weer elke donderdag open. Kom gezellig langs voor koffie en een vraag." },
+  { slug: "nieuwe-cursus-veilig-online", date: "2026-10-15", title: "Nieuwe cursus: Veilig online", body: "Vanaf november starten we met een korte cursus over veilig internetten. Aanmelden kan via de cursuscoördinator." },
+  { slug: "workshop-kalender-maken-succes", date: "2026-09-28", title: "Workshop kalender maken groot succes", body: "Twintig leden maakten hun eigen kalender voor 2027. Bedankt aan alle vrijwilligers!" },
+  { slug: "nieuwe-seizoen-begonnen", date: "2026-09-01", title: "Het nieuwe seizoen is begonnen", body: "Na de zomer zijn we weer elke donderdag open. Kom gezellig langs voor koffie en een vraag." },
 ];
 
 export function initials(name: string) {
