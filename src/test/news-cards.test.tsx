@@ -43,13 +43,15 @@ describe("Nieuwskaarten", () => {
   });
 
   it("links each related news card on an article to its own article", async () => {
-    renderAt(`/nieuws/${news[0].slug}`);
+    const [first, ...rest] = news;
+    if (!first) throw new Error("no news items to test");
+    renderAt(`/nieuws/${first.slug}`);
     const section = await sectionByHeading("Meer nieuws");
 
-    // The open article is never listed again, so its two siblings remain.
-    expect(within(section).getAllByRole("link")).toHaveLength(news.length - 1);
+    // The open article is never listed again, so only its siblings remain.
+    expect(within(section).getAllByRole("link")).toHaveLength(rest.length);
 
-    for (const item of news.slice(1)) {
+    for (const item of rest) {
       const card = within(section).getByRole("link", { name: new RegExp(item.title) });
       expect(card).toHaveAttribute("href", `/nieuws/${item.slug}`);
     }
