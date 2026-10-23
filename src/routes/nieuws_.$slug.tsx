@@ -4,7 +4,7 @@ import { news } from "@/lib/content";
 const formatDate = (date: string) =>
   new Date(date).toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric" });
 
-export const Route = createFileRoute("/nieuws/$slug")({
+export const Route = createFileRoute("/nieuws_/$slug")({
   loader: ({ params }) => {
     const item = news.find((n) => n.slug === params.slug);
     if (!item) throw notFound();
