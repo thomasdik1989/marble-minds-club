@@ -10,12 +10,14 @@ import { news } from "@/lib/content";
 
 // Render a real page through the real router, so the links under test are the
 // ones the site actually produces — not a hand-written copy of them.
-function renderAt(path: string) {
+async function renderAt(path: string) {
   const router = createRouter({
     routeTree,
     history: createMemoryHistory({ initialEntries: [path] }),
     context: { queryClient: new QueryClient() },
   });
+  // Nothing navigates in a test run, so the route is loaded by hand.
+  await router.load();
   return render(<RouterProvider router={router} />);
 }
 
@@ -30,7 +32,7 @@ describe("Nieuwskaarten", () => {
   afterEach(cleanup);
 
   it("links each home-page news card to its own article", async () => {
-    renderAt("/");
+    await renderAt("/");
     const section = await sectionByHeading("Laatste nieuws");
 
     // One card per news item, plus the "Al het nieuws" link below the grid.
@@ -45,7 +47,7 @@ describe("Nieuwskaarten", () => {
   it("links each related news card on an article to its own article", async () => {
     const [first, ...rest] = news;
     if (!first) throw new Error("no news items to test");
-    renderAt(`/nieuws/${first.slug}`);
+    await renderAt(`/nieuws/${first.slug}`);
     const section = await sectionByHeading("Meer nieuws");
 
     // The open article is never listed again, so only its siblings remain.
