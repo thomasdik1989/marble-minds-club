@@ -13,11 +13,12 @@ describe("debug render", () => {
       history: createMemoryHistory({ initialEntries: ["/"] }),
       context: { queryClient: new QueryClient() },
     });
+    await router.load();
+    console.log("after load — isLoading:", router.state.isLoading, "matches:", router.state.matches.length);
     const { container } = render(<RouterProvider router={router} />);
-    console.log("state.isLoading:", router.state.isLoading, "matches:", router.state.matches.length);
-    await new Promise((r) => setTimeout(r, 800));
-    console.log("DOC:", document.documentElement.outerHTML.slice(0, 900));
-    console.log("BODY:", document.body.innerHTML.slice(0, 400));
+    await new Promise((r) => setTimeout(r, 400));
+    console.log("BODY:", document.body.innerHTML.slice(0, 700));
+    console.log("CONTAINER:", container.innerHTML.slice(0, 300));
     expect(true).toBe(true);
   });
 });
