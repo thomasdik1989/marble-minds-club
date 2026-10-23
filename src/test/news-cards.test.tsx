@@ -22,6 +22,7 @@ async function renderAt(path: string) {
 }
 
 async function sectionByHeading(name: string) {
+  console.log("BODY BEFORE FIND:", document.body.innerHTML.slice(0, 300));
   const heading = await screen.findByRole("heading", { name });
   const section = heading.closest("section");
   if (!section) throw new Error(`heading "${name}" is not inside a section`);
