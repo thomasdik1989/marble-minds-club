@@ -47,11 +47,9 @@ function Index() {
       <section aria-labelledby="laatste-nieuws" className="mt-16">
         <h2 id="laatste-nieuws" className="text-3xl font-bold text-primary">Laatste nieuws</h2>
         <ul className="mt-6 grid gap-6 md:grid-cols-3">
-          {news.map((n) => (
-            <li key={n.title} className="rounded-3xl border-4 border-primary bg-card p-5">
-              <p className="text-base font-bold"><time dateTime={n.date}>{new Date(n.date).toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric" })}</time></p>
-              <h3 className="mt-1 text-2xl font-bold">{n.title}</h3>
-              <p className="mt-2">{n.body}</p>
+          {news.map((n, i) => (
+            <li key={n.slug}>
+              <NewsCard n={n} i={i} />
             </li>
           ))}
         </ul>

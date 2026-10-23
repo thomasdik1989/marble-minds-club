@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Book, Calendar, Camera, Laptop, Shield, Smartphone } from "lucide-react";
-import type { Course, Person } from "@/lib/content";
-import { initials } from "@/lib/content";
+import type { Course, NewsItem, Person } from "@/lib/content";
+import { formatDate, initials } from "@/lib/content";
 
 const icons = { book: Book, calendar: Calendar, camera: Camera, laptop: Laptop, phone: Smartphone, shield: Shield };
 const tilt = ["-rotate-1", "rotate-1", "rotate-0", "-rotate-2", "rotate-2"];

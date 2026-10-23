@@ -46,6 +46,10 @@ export const news: NewsItem[] = [
   { slug: "nieuwe-seizoen-begonnen", date: "2026-09-01", title: "Het nieuwe seizoen is begonnen", body: "Na de zomer zijn we weer elke donderdag open. Kom gezellig langs voor koffie en een vraag." },
 ];
 
+export function formatDate(date: string) {
+  return new Date(date).toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric" });
+}
+
 export function initials(name: string) {
   return name.split(" ").filter((p) => p[0] && p[0] === p[0].toUpperCase()).map((p) => p[0]).slice(0, 2).join("");
 }
