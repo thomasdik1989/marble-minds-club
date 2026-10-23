@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Book, Calendar, Camera, Laptop, Shield, Smartphone } from "lucide-react";
-import type { Course, Person } from "@/lib/content";
-import { initials } from "@/lib/content";
+import type { Course, NewsItem, Person } from "@/lib/content";
+import { formatDate, initials } from "@/lib/content";
 
 const icons = { book: Book, calendar: Calendar, camera: Camera, laptop: Laptop, phone: Smartphone, shield: Shield };
 const tilt = ["-rotate-1", "rotate-1", "rotate-0", "-rotate-2", "rotate-2"];
@@ -37,6 +37,17 @@ export function CourseCard({ c, n }: { c: Course; n: number }) {
       <h2 className="mt-2 text-2xl font-bold">{c.title}</h2>
       <p className="mt-1">{c.summary}</p>
       <span className="mt-2 inline-block font-bold text-primary underline">Bekijk cursus<span className="sr-only">: {c.title}</span></span>
+    </Link>
+  );
+}
+
+export function NewsCard({ n, i }: { n: NewsItem; i: number }) {
+  return (
+    <Link to="/nieuws/$slug" params={{ slug: n.slug }} className={`${cardCls} flex flex-col ${tilt[i % tilt.length]}`}>
+      <p className="text-base font-bold"><time dateTime={n.date}>{formatDate(n.date)}</time></p>
+      <h3 className="mt-1 text-2xl font-bold">{n.title}</h3>
+      <p className="mt-2">{n.body}</p>
+      <span className="mt-auto pt-3 inline-block font-bold text-primary underline">Lees verder<span className="sr-only">: {n.title}</span></span>
     </Link>
   );
 }
