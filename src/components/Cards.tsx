@@ -40,3 +40,14 @@ export function CourseCard({ c, n }: { c: Course; n: number }) {
     </Link>
   );
 }
+
+export function NewsCard({ n, i }: { n: NewsItem; i: number }) {
+  return (
+    <Link to="/nieuws/$slug" params={{ slug: n.slug }} className={`${cardCls} ${tilt[i % tilt.length]}`}>
+      <p className="text-base font-bold"><time dateTime={n.date}>{formatDate(n.date)}</time></p>
+      <h3 className="mt-1 text-2xl font-bold">{n.title}</h3>
+      <p className="mt-2">{n.body}</p>
+      <span className="mt-3 inline-block font-bold text-primary underline">Lees verder<span className="sr-only">: {n.title}</span></span>
+    </Link>
+  );
+}

@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Slider } from "@/components/Slider";
+import { NewsCard } from "@/components/Cards";
 import { club, news } from "@/lib/content";
 import s1 from "@/assets/slide-1.jpg";
 import s2 from "@/assets/slide-2.jpg";
