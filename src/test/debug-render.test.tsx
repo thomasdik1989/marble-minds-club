@@ -16,7 +16,8 @@ describe("debug render", () => {
     const { container } = render(<RouterProvider router={router} />);
     console.log("state.isLoading:", router.state.isLoading, "matches:", router.state.matches.length);
     await new Promise((r) => setTimeout(r, 800));
-    console.log("HTML:", container.innerHTML.slice(0, 600));
+    console.log("DOC:", document.documentElement.outerHTML.slice(0, 900));
+    console.log("BODY:", document.body.innerHTML.slice(0, 400));
     expect(true).toBe(true);
   });
 });
