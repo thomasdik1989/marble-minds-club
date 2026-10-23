@@ -18,11 +18,18 @@ export const Route = createFileRoute("/nieuws")({
       <PageHeader title="Nieuws" intro="Wat gebeurt er bij de club?" />
       <ol className="mx-auto grid max-w-3xl gap-6 px-5">
         {news.map((n) => (
-          <li key={n.title}>
+          <li key={n.slug}>
             <article className="rounded-3xl border-4 border-primary bg-card p-6">
               <p className="font-bold"><time dateTime={n.date}>{new Date(n.date).toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric" })}</time></p>
-              <h2 className="mt-1 text-3xl font-bold">{n.title}</h2>
+              <h2 className="mt-1 text-3xl font-bold">
+                <Link to="/nieuws/$slug" params={{ slug: n.slug }} className="text-primary underline decoration-2 underline-offset-4">{n.title}</Link>
+              </h2>
               <p className="mt-3">{n.body}</p>
+              <p className="mt-3">
+                <Link to="/nieuws/$slug" params={{ slug: n.slug }} className="font-bold text-primary underline">
+                  Lees verder<span className="sr-only">: {n.title}</span>
+                </Link>
+              </p>
             </article>
           </li>
         ))}
