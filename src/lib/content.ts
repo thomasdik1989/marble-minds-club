@@ -23,11 +23,11 @@ export const club = {
 };
 
 export const board: Person[] = [
-  { slug: "voorzitter", name: "Jan de Vries", role: "Voorzitter", bio: "Leidt de vergaderingen en is het eerste aanspreekpunt van de club. Programmeert al sinds de Commodore 64." },
-  { slug: "secretaris", name: "Ria Bakker", role: "Secretaris", bio: "Houdt de ledenadministratie en de notulen bij. Weet van iedereen de verjaardag." },
-  { slug: "penningmeester", name: "Kees Visser", role: "Penningmeester", bio: "Beheert de financiën en de contributie. Spreadsheets zijn zijn tweede natuur." },
-  { slug: "cursuscoordinator", name: "Annet Smit", role: "Cursuscoördinator", bio: "Plant de cursussen en zoekt de docenten. Mail haar gerust met wensen." },
-  { slug: "technische-dienst", name: "Piet Mulder", role: "Hoofd Technische Dienst", bio: "Schroeft, sleutelt en installeert. Geen computer is hem te oud." },
+  { slug: "voorzitter", name: "Bert de Groodt", role: "Voorzitter", bio: "Leidt de vergaderingen en is het eerste aanspreekpunt van de club." },
+  { slug: "secretaris", name: "Pauld den Hartigh", role: "Secretaris", bio: "Houdt de ledenadministratie en de notulen bij. Weet van iedereen de verjaardag." },
+  { slug: "penningmeester", name: "Peter Blankendaal", role: "Penningmeester / Ledenadministratie", bio: "Beheert de financiën en de contributie. Spreadsheets zijn zijn tweede natuur." },
+  { slug: "algemene-info", name: "Gerrit Dijkstra", role: "Algemene Info", bio: "" },
+  { slug: "technische-dienst", name: "Johan Harms", role: "Hoofd Technische Dienst", bio: "Schroeft, sleutelt en installeert. Geen computer is hem te oud." },
 ];
 
 export const courses: Course[] = [
