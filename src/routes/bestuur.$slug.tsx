@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { board, club, initials } from "@/lib/content";
+import { personPhoto } from "@/lib/people-photos";
 
 export const Route = createFileRoute("/bestuur/$slug")({
   loader: ({ params }) => {
@@ -28,7 +29,11 @@ function Detail() {
     <div className="mx-auto max-w-4xl px-5 py-12">
       <p><Link to="/bestuur" className="font-bold text-primary underline">← Terug naar het bestuur</Link></p>
       <div className="mt-6 grid gap-8 rounded-3xl border-4 border-primary bg-card p-6 md:grid-cols-[14rem_minmax(0,1fr)]">
-        <div aria-hidden="true" className="mx-auto w-full max-w-56 grid aspect-square place-items-center rounded-2xl bg-accent font-display text-7xl font-bold -rotate-3">{initials(p.name)}</div>
+        {personPhoto(p.slug) ? (
+          <img src={personPhoto(p.slug)} alt={`Foto van ${p.name}`} width={800} height={800} className="mx-auto w-full max-w-56 aspect-square rounded-2xl object-cover -rotate-3" />
+        ) : (
+          <div aria-hidden="true" className="mx-auto w-full max-w-56 grid aspect-square place-items-center rounded-2xl bg-accent font-display text-7xl font-bold -rotate-3">{initials(p.name)}</div>
+        )}
         <div>
           <h1 className="text-3xl sm:text-4xl font-bold text-primary">{p.name}</h1>
           <p className="mt-1 text-xl font-bold">{p.role}</p>

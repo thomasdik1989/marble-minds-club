@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Book, Calendar, Camera, Laptop, Shield, Smartphone } from "lucide-react";
 import type { Course, NewsItem, Person } from "@/lib/content";
 import { formatDate, initials } from "@/lib/content";
+import { personPhoto } from "@/lib/people-photos";
 
 const icons = { book: Book, calendar: Calendar, camera: Camera, laptop: Laptop, phone: Smartphone, shield: Shield };
 const tilt = ["-rotate-1", "rotate-1", "rotate-0", "-rotate-2", "rotate-2"];
@@ -12,9 +13,13 @@ const cardCls =
 export function PersonCard({ p, n }: { p: Person; n: number }) {
   return (
     <Link to="/bestuur/$slug" params={{ slug: p.slug }} className={`${cardCls} ${tilt[n % tilt.length]}`}>
-      <div aria-hidden="true" className="grid aspect-square place-items-center rounded-2xl bg-accent font-display text-6xl font-bold text-accent-foreground">
-        {initials(p.name)}
-      </div>
+      {personPhoto(p.slug) ? (
+        <img src={personPhoto(p.slug)} alt="" width={800} height={800} loading="lazy" className="aspect-square w-full rounded-2xl object-cover" />
+      ) : (
+        <div aria-hidden="true" className="grid aspect-square place-items-center rounded-2xl bg-accent font-display text-6xl font-bold text-accent-foreground">
+          {initials(p.name)}
+        </div>
+      )}
       <h2 className="mt-4 text-2xl font-bold">{p.name}</h2>
       <p className="text-lg">{p.role}</p>
       <span className="mt-2 inline-block font-bold text-primary underline">Lees meer<span className="sr-only"> over {p.name}</span></span>
