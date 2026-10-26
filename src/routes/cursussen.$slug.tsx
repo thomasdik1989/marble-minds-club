@@ -34,6 +34,13 @@ function Detail() {
           <h1 className="text-3xl sm:text-4xl font-bold text-primary">{c.title}</h1>
           <p className="mt-2 inline-block rounded-full border-2 px-3 font-bold">Niveau: {c.level}</p>
           <p className="mt-4 text-xl">{c.summary}</p>
+          {c.description?.map((para) => <p key={para} className="mt-4">{para}</p>)}
+          {c.topics && (
+            <>
+              <h2 className="mt-6 text-2xl font-bold">Wat komt aan bod</h2>
+              <ul className="mt-2 list-disc pl-6">{c.topics.map((t) => <li key={t}>{t}</li>)}</ul>
+            </>
+          )}
           <h2 className="mt-6 text-2xl font-bold">Praktisch</h2>
           <ul className="mt-2 list-disc pl-6">{c.details.map((d) => <li key={d}>{d}</li>)}</ul>
           <p className="mt-6">Aanmelden of vragen? Mail <a className="font-bold text-primary underline" href={`mailto:${club.courseEmail}`}>{club.courseEmail}</a></p>

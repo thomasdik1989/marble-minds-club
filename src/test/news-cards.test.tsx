@@ -48,6 +48,12 @@ describe("Nieuwskaarten", () => {
     const [first, ...rest] = news;
     if (!first) throw new Error("no news items to test");
     await renderAt(`/nieuws/${first.slug}`);
+
+    // With no other articles there is no "Meer nieuws" section to show.
+    if (rest.length === 0) {
+      expect(screen.queryByRole("heading", { name: "Meer nieuws" })).not.toBeInTheDocument();
+      return;
+    }
     const section = await sectionByHeading("Meer nieuws");
 
     // The open article is never listed again, so only its siblings remain.

@@ -6,9 +6,19 @@ export type Course = {
   level: "Beginners" | "Gevorderden" | "Iedereen";
   icon: "camera" | "book" | "laptop" | "phone" | "shield" | "calendar";
   summary: string;
+  description?: string[];
+  topics?: string[];
   details: string[];
 };
-export type NewsItem = { slug: string; date: string; title: string; body: string };
+export type NewsItem = {
+  slug: string;
+  date: string;
+  title: string;
+  body: string;
+  intro?: string[];
+  topics?: string[];
+  outro?: string[];
+};
 
 export const club = {
   name: "Regionale Computerclub Noord-Holland",
@@ -30,20 +40,109 @@ export const board: Person[] = [
   { slug: "technische-dienst", name: "Johan Harms", role: "Hoofd Technische Dienst", bio: "Schroeft, sleutelt en installeert. Geen computer is hem te oud." },
 ];
 
+const coursePrice = "Lesgeld: € 15 voor niet-leden, € 10 voor leden per lesdag, incl. koffie/thee";
+const location = "Locatie: Buurthuis De Hoeksteen, Amatist 13, Heerhugowaard";
+
 export const courses: Course[] = [
-  { slug: "fotoboek-maken", title: "Fotoboek maken met CeWe", level: "Iedereen", icon: "book", summary: "Maak een prachtig fotoboek van uw mooiste herinneringen.", details: ["4 lessen op donderdagmiddag", "Eigen laptop meenemen", "Inclusief hulp bij bestellen"] },
-  { slug: "kalender-maken", title: "Kalender maken", level: "Iedereen", icon: "calendar", summary: "Een eigen fotokalender, perfect als cadeau.", details: ["2 lessen", "CeWe-software", "Eigen foto's meenemen"] },
-  { slug: "elements-beginners", title: "Foto bewerken — beginners", level: "Beginners", icon: "camera", summary: "De basis van Photoshop Elements: bijsnijden, kleuren, belichting.", details: ["6 lessen", "Geen ervaring nodig"] },
-  { slug: "elements-gevorderden", title: "Foto bewerken — gevorderden", level: "Gevorderden", icon: "camera", summary: "Lagen, maskers en retoucheren met Photoshop Elements.", details: ["6 lessen", "Na de beginnerscursus"] },
-  { slug: "windows-basis", title: "Windows de baas", level: "Beginners", icon: "laptop", summary: "Bestanden, mappen, instellingen en veilig internetten.", details: ["5 lessen", "Op club-laptops of eigen laptop"] },
-  { slug: "smartphone", title: "Smartphone & tablet", level: "Beginners", icon: "phone", summary: "Apps, foto's, WhatsApp en videobellen met de kleinkinderen.", details: ["4 lessen", "Android én iPhone"] },
-  { slug: "veilig-online", title: "Veilig online", level: "Iedereen", icon: "shield", summary: "Herken nepberichten, maak sterke wachtwoorden en bankier veilig.", details: ["2 lessen", "Praktische tips voor thuis"] },
+  {
+    slug: "fotoboek-maken",
+    title: "Fotoboek maken met CeWe",
+    level: "Iedereen",
+    icon: "book",
+    summary: "Maak een fotoboek van uw mooiste herinneringen met de gratis CeWe-software.",
+    description: [
+      "Voor het maken van een fotoboek gebruiken we de software van CeWe. Deze software is gratis te downloaden via www.cewe-fotoboek.nl en wordt bij elk fotoboek automatisch bijgewerkt.",
+      "Een groot voordeel: de fotoboeken die u hier maakt, kunt u ook openen in de software van winkels als Albert Heijn, Kruidvat, Lidl, Etos, Vomar, DeKa-markt en Bol.com. De software is internationaal en wordt ook gebruikt bij winkelketens in Frankrijk, België, Duitsland en Oostenrijk.",
+    ],
+    topics: [
+      "Verkenning van de software: opbouw van het scherm en de belangrijkste knoppen",
+      "De kaft van het fotoboek",
+      "Achtergronden: standaard of met eigen foto's",
+      "Foto's invoegen, vergroten, verkleinen en plaatsen",
+      "Aantal foto's per bladzijde en bladindelingen",
+      "Sjablonen en passepartouts",
+      "Paginanummering",
+      "Teksten en clipart bij de foto's",
+    ],
+    details: [
+      "Voldoende digitale foto's aanwezig, of neem uw eigen foto's mee op een USB-stick",
+      coursePrice,
+      "Lesmateriaal niet inbegrepen",
+      "Maximaal acht cursisten per groep",
+      location,
+    ],
+  },
+  {
+    slug: "kalender-maken",
+    title: "Kalender maken met CeWe",
+    level: "Iedereen",
+    icon: "calendar",
+    summary: "Maak een eigen fotokalender met de gratis CeWe-software. Ideaal als cadeau.",
+    description: [
+      "Tijdens deze workshop maakt u met de CeWe-software een eigen fotokalender met uw mooiste foto's.",
+    ],
+    details: [
+      "Werken met de gratis CeWe-software",
+      "Eigen foto's meenemen op een USB-stick",
+      coursePrice,
+      "Lesmateriaal niet inbegrepen",
+      location,
+    ],
+  },
+  {
+    slug: "elements-beginners",
+    title: "Foto bewerken met Elements — beginners",
+    level: "Beginners",
+    icon: "camera",
+    summary: "Leer de basis van fotobewerking met Photoshop Elements.",
+    description: [
+      "Naast deze cursus voor beginners (4 lessen) bieden wij een basiscursus (2 lessen) voor wie nog niets weet van fotobewerking.",
+    ],
+    details: [
+      "4 lessen",
+      coursePrice,
+      "Lesmateriaal niet inbegrepen",
+      "Maximaal acht cursisten per groep",
+      location,
+    ],
+  },
+  {
+    slug: "elements-gevorderden",
+    title: "Foto bewerken met Elements — gevorderden",
+    level: "Gevorderden",
+    icon: "camera",
+    summary: "Verdiep uw kennis van fotobewerking met Photoshop Elements.",
+    description: [
+      "Een cursus voor cursisten die al enige ervaring hebben met fotobewerking. De lessen vinden plaats op donderdagmiddag of -avond.",
+    ],
+    details: [
+      "4 lessen op donderdagmiddag of -avond",
+      coursePrice,
+      "Lesmateriaal niet inbegrepen",
+      "Maximaal acht cursisten per groep",
+      location,
+    ],
+  },
 ];
 
 export const news: NewsItem[] = [
-  { slug: "nieuwe-cursus-veilig-online", date: "2026-10-15", title: "Nieuwe cursus: Veilig online", body: "Vanaf november starten we met een korte cursus over veilig internetten. Aanmelden kan via de cursuscoördinator." },
-  { slug: "workshop-kalender-maken-succes", date: "2026-09-28", title: "Workshop kalender maken groot succes", body: "Twintig leden maakten hun eigen kalender voor 2027. Bedankt aan alle vrijwilligers!" },
-  { slug: "nieuwe-seizoen-begonnen", date: "2026-09-01", title: "Het nieuwe seizoen is begonnen", body: "Na de zomer zijn we weer elke donderdag open. Kom gezellig langs voor koffie en een vraag." },
+  {
+    slug: "clubmiddag-demonstraties",
+    date: "2026-10-26",
+    title: "Clubmiddag op donderdag: demonstraties",
+    body: "Elke donderdag zijn wij open in buurthuis De Hoeksteen in Heerhugowaard. Tussen 15.00 en 16.30 uur geven wij regelmatig een demonstratie.",
+    intro: [
+      "U bent van harte welkom in het buurthuis De Hoeksteen in Heerhugowaard. Elke donderdag houden wij onze clubbijeenkomsten van 13.30 tot 21.30 uur.",
+      "Tijdens de clubmiddag op donderdag geven wij regelmatig een demonstratie tussen 15.00 en 16.30 uur over de volgende onderwerpen:",
+    ],
+    topics: [
+      "Werken met een race- en/of vluchtsimulator",
+      "Een demonstratie over het programma Narakeet",
+    ],
+    outro: [
+      "Bij de demonstratie over Narakeet krijgt u uitleg over de opbouw van een film, en daarna over het maken van een gesproken tekst (voice-over) onder een film.",
+    ],
+  },
 ];
 
 export function formatDate(date: string) {

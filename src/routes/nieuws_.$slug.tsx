@@ -34,7 +34,12 @@ function Detail() {
       <article className="mt-6 rounded-3xl border-4 border-primary bg-card p-6 shadow-[0.4rem_0.4rem_0_var(--primary)]">
         <p className="font-bold"><time dateTime={item.date}>{formatDate(item.date)}</time></p>
         <h1 className="mt-1 text-3xl sm:text-4xl font-bold text-primary">{item.title}</h1>
-        <p className="mt-4 text-xl">{item.body}</p>
+        {item.intro?.map((para) => <p key={para} className="mt-4 text-xl">{para}</p>)}
+        {item.topics && (
+          <ul className="mt-4 list-disc pl-6 text-xl">{item.topics.map((t) => <li key={t} className="mt-1">{t}</li>)}</ul>
+        )}
+        {item.outro?.map((para) => <p key={para} className="mt-4 text-xl">{para}</p>)}
+        {!item.intro && <p className="mt-4 text-xl">{item.body}</p>}
       </article>
 
       {related.length > 0 && (

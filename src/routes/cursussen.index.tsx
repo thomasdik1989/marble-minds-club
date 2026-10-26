@@ -7,7 +7,7 @@ export const Route = createFileRoute("/cursussen/")({
   head: () => ({
     meta: [
       { title: "Cursussen — CompuClub Heerhugowaard" },
-      { name: "description", content: "Computercursussen voor beginners en gevorderden: fotobewerking, smartphone, Windows en meer." },
+      { name: "description", content: "Cursussen van CompuClub Heerhugowaard: fotoboek en kalender maken met CeWe, en fotobewerking met Photoshop Elements." },
       { property: "og:title", content: "Cursussen — CompuClub" },
       { property: "og:description", content: "Computercursussen voor beginners en gevorderden." },
       { property: "og:type", content: "website" },
